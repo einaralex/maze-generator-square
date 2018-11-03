@@ -218,15 +218,15 @@ module.exports.create = (spec) => {
             console.log("MAZE: %d, %d", _x, _y);
             // print top north walls
             var border = "";
-            // var lim = _x  * 2;
-            // for( var i = 0; i < lim; i++ ) {
-            //     border += i === 0 ? " " : this.connects(i,0,"N") ? " " : "_";
-            // }
+
             for( var i = 0; i < _x; i++ ) {
                 border += (i === 0 ? " " : "");
                 border += this.connects(i,0,"N") ? "  " : "__";
             }
             console.log( border );
+
+            let result = [];
+            result.push(border);
             // print maze east and south walls
             let dirMap = this.dirMap;
             for(var y = 0; y < _y; y++) {
@@ -240,7 +240,9 @@ module.exports.create = (spec) => {
                     }
                 }
                 console.log( row );
+                result.push( row );
             }
+            return result;
         }
     });
 };
